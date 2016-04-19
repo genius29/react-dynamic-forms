@@ -9,6 +9,10 @@ const inputs = [{
 {
   name: 'email',
   type: 'email'
+},
+{
+  name: 'farts bobba',
+  type: 'text'
 }
 ]
 
