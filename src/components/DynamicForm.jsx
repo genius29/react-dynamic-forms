@@ -5,34 +5,36 @@ export default class DynamicForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: false
+      errors: []
     }
   }
   handleSubmit(e) {
     e.preventDefault()
-    const formData = {}
-    const responses = []
-    this.props.inputs.map((input) => {
-      formData[input.name] = this.refs[input.name].value
-      responses.push(this.refs[input.name].value)
-      this.refs[input.name].value = ''
-    })
-    if (this.validateForm(responses)) {
-      this.setState({ error: false })
+    if (this.validateForm()) {
+      const formData = {}
+      this.props.inputs.map(i => formData[i.name] = this.refs[i.name].value)
       this.props.callBack(formData)
-    } else {
-      this.setState({ error: true })
+      this.props.inputs.map(i => this.refs[i.name].value = '')
+      this.setState({errors: []})
     }
   }
-  validateForm(responses) {
-    return responses.filter(i => i === '').length === 0
+  validateForm() {
+    const responses = []
+    this.props.inputs.map((i) => responses.push([i.name, this.refs[i.name].value]))
+    const invalidFields = responses.filter(r => { return r[1] === '' })
+    return invalidFields.length > 0 ? this.setError(invalidFields) : true
+  }
+  setError(invalidFields) {
+    this.setState({errors: invalidFields.map(f => f[0])})
+    return false
   }
   render() {
     const { inputs } = this.props
-    const { error } = this.state
+    const { errors } = this.state
     const fields = inputs.map((input, idx) => {
-      return <div className="form-group"  key={idx}>
-        <label>{input.name}</label>
+      const inputClasses = errors.filter(e => e === input.name).length ? "form-group has-error" : "form-group"
+      return <div className={inputClasses}  key={idx}>
+        <label className="control-label">{input.name}</label>
         <input className="form-control" name={input.name} ref={input.name} type={input.type}/>
       </div>
     })
@@ -42,7 +44,7 @@ export default class DynamicForm extends Component {
         <div className="form-group">
           <button className="btn btn-success" type="submit">Submit</button>
         </div>
-        <div className="alert alert-danger" style={{display: error ? 'block' : 'none'}} role="alert">
+        <div className="alert alert-danger" style={{display: errors.length > 0 ? 'block' : 'none'}} role="alert">
           <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span className="sr-only">Error:</span>
           &nbsp; Fields are missing
