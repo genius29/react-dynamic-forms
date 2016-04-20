@@ -28,7 +28,9 @@ class Example extends React.Component {
       }
     ]
     return (
-      <AutomaticForm inputs={inputFields} callBack={this.handleSubmit.bind(this)}/>
+      <AutomaticForm inputs={inputFields}
+                     callBack={this.handleSubmit.bind(this)}
+                     />
         )
   }
 }
