@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class DynamicForm extends Component {
+class AutomaticForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -53,4 +53,4 @@ class DynamicForm extends Component {
   }
 }
 
-export default DynamicForm
+export default AutomaticForm

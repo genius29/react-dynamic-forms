@@ -1,7 +1,7 @@
 {
-    "name": "react-dynamic-forms",
+    "name": "react-automatic-form",
     "version": "1.0.0",
-    "description": "Auto generate forms with input fields and validation and callback support",
+    "description": "Auto generate a form with any number of inputs",
     "repository": {
         "type": "git",
         "url": "https://github.com/airrobb/react-dynamic-forms"

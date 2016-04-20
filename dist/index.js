@@ -73,13 +73,13 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var DynamicForm = function (_Component) {
-    _inherits(DynamicForm, _Component);
+  var AutomaticForm = function (_Component) {
+    _inherits(AutomaticForm, _Component);
 
-    function DynamicForm(props) {
-      _classCallCheck(this, DynamicForm);
+    function AutomaticForm(props) {
+      _classCallCheck(this, AutomaticForm);
 
-      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DynamicForm).call(this, props));
+      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AutomaticForm).call(this, props));
 
       _this.state = {
         errors: []
@@ -87,7 +87,7 @@
       return _this;
     }
 
-    _createClass(DynamicForm, [{
+    _createClass(AutomaticForm, [{
       key: 'handleSubmit',
       value: function handleSubmit(e) {
         var _this2 = this;
@@ -178,8 +178,8 @@
       }
     }]);
 
-    return DynamicForm;
+    return AutomaticForm;
   }(_react.Component);
 
-  exports.default = DynamicForm;
+  exports.default = AutomaticForm;
 });
