@@ -1,2 +1,6 @@
-# react-dynamic-forms
-Dynamic form components
+# React Dynamic Input Forms
+
+
+## License
+
+MIT

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-//Landing Page Junk Stuff
-export default class DynamicForm extends Component {
+class DynamicForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -53,3 +52,5 @@ export default class DynamicForm extends Component {
     )
   }
 }
+
+export default DynamicForm
